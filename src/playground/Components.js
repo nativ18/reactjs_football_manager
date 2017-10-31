@@ -1,5 +1,4 @@
 import * as React from "react";
-import {addExpense} from "../actions/expenses";
 import moment from "moment";
 
 export const TopVarSlim = () => (
@@ -33,13 +32,13 @@ export class TopVarFullWithProp extends React.Component {
         console.log(this.props)
         return (<div><h6>TopBar with all. info = {this.props.info}</h6></div>);
 
-        timer(3000, () => {
-            this.props.store.dispatch(addExpense({
-                description: 'asddaddds',
-                note: '',
-                amount: 1000,
-                createdAt: moment()
-            }))
-        })
+        // timer(3000, () => {
+        //     this.props.store.dispatch(addExpense({
+        //         description: 'asddaddds',
+        //         note: '',
+        //         amount: 1000,
+        //         createdAt: moment()
+        //     }))
+        // })
     }
 }

@@ -3,9 +3,10 @@ import uuid from 'uuid';
 // ADD_EXPENSE
 export const createPlayer = ({
                                  fullname = '',
-                                 age = '',
+                                 age = 0,
                                  price = 0,
-                                 position = 'GK'
+                                 position = 'GK',
+                                 image = ''
                              } = {}) => ({
     type: 'CREATE_PLAYER',
     player: {
@@ -13,13 +14,14 @@ export const createPlayer = ({
         fullname,
         age,
         price,
-        position
+        position,
+        image
     }
 });
 
 // DELETE PLAYER
-export const removeExpense = ({id} = {}) => ({
-    type: 'CREATE_PLAYER',
+export const removePlayer = ({id} = {}) => ({
+    type: 'REMOVE_PLAYER',
     id
 });
 

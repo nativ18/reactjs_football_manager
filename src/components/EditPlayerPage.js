@@ -1,32 +1,26 @@
 import * as React from "react";
-import {createPlayer, editPlayer} from "../actions/players";
+import {createPlayer} from "../actions/players";
 import {CreatePlayerItem} from "./CreatePlayerItem";
 import connect from "react-redux/es/connect/connect";
 
 class CreatePlayerPage extends React.Component {
-
-    onPlayerCreated = (player) => {
-        if (player.id)
-            this.props.editPlayer(player);
-        else
-            this.props.createPlayer(player);
-
+    onPlayerEdited = (player) => {
+        this.props.editPlayer(player);
         this.props.history.push('/');
     };
     onRemove = (player) => {
-        // this.props.removeExpense({id: player.id});
+        // this.props.removePlayer({id: player.id});
         // this.props.history.push('/');
     };
 
     render() {
         return (
             <div>
-                {console.log("111 - this.props.player = " + this.props.player)}
-
                 <CreatePlayerItem
                     player={this.props.player}
-                    onPlayerCreated={this.onPlayerCreated}
+                    onPlayerCreated={this.onPlayerEdited}
                 />
+                <button onClick={this.onRemove}>Remove</button>
             </div>
         );
     }
@@ -36,8 +30,7 @@ class CreatePlayerPage extends React.Component {
 
 // sending function that create players into component
 const mapDispatchToProps = (dispatch, props) => ({
-    createPlayer: (player) => dispatch(createPlayer(player)),
-    editPlayer: (player) => dispatch(editPlayer(player.id, player))
+    editPlayer: (player) => dispatch(createPlayer(player))
 });
 
 const mapStateToProps = (state, props) => ({

@@ -1,13 +1,11 @@
 // Expenses Reducer
 
-const expensesReducerDefaultState = [];
+const playerReducerDefaultState = [];
 
 // the state it manages is an array of players.
-export default (state = expensesReducerDefaultState, action) => {
+export default (state = playerReducerDefaultState, action) => {
     switch (action.type) {
         case 'CREATE_PLAYER':
-            console.log("1. " + state);
-            console.log(...state);
             return [
                 ...state,
                 action.player
@@ -15,14 +13,14 @@ export default (state = expensesReducerDefaultState, action) => {
         case 'REMOVE_PLAYER':
             return state.filter(({id}) => id !== action.id);
         case 'EDIT_PLAYER':
-            return state.map((expense) => {
-                if (expense.id === action.id) {
+            return state.map((player) => {
+                if (player.id === action.id) {
                     return {
-                        ...expense,
+                        ...player,
                         ...action.updates
                     };
                 } else {
-                    return expense;
+                    return player;
                 }
                 ;
             });

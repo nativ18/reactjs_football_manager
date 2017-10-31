@@ -1,6 +1,6 @@
 import * as React from "react";
-import EditExpensePage from "./EditExpensePage";
 import connect from "react-redux/es/connect/connect";
+import Link from "react-router-dom/es/Link";
 
 export class MainPageComponent extends React.Component {
     render() {
@@ -12,7 +12,10 @@ export class MainPageComponent extends React.Component {
                 <list>
                     {this.props.players.map((player) => (
                         <div key={player.id}>
-                            <li>name is {player.fullname}. age = {player.age}</li>
+                            {/*{console.log("id = " + player.id)}*/}
+                            <Link to={`/player/${player.id}`}>name is {player.fullname}. age
+                                is {player.age}</Link>
+                            {player.image && <img src={player.image} width={200} height={200}/>}
                         </div>
                     ))}
                 </list>

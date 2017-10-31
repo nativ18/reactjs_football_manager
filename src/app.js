@@ -6,7 +6,6 @@ import './playground/Components.js'
 import configureStore from './store/configureStore.js';
 import {Provider} from 'react-redux';
 import AppRouter from "./routers/AppRouter";
-import {addExpense} from "./actions/expenses";
 import {createPlayer} from "./actions/players";
 
 const store = configureStore();
