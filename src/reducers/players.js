@@ -11,7 +11,8 @@ export default (state = playerReducerDefaultState, action) => {
                 action.player
             ];
         case 'REMOVE_PLAYER':
-            return state.filter(({id}) => id !== action.id);
+            const player = state.filter(({id}) => id !== action.id)
+            return player;
         case 'EDIT_PLAYER':
             return state.map((player) => {
                 if (player.id === action.id) {

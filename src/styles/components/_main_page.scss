@@ -1,0 +1,56 @@
+.centered_container {
+  max-width: 60rem;
+  padding: 0 $m-size;
+  margin: 1rem auto;
+  text-align:center;
+}
+
+.player_item {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  //align-items: flex-end;
+
+  height: auto;
+  border: 0.1rem solid #424242;
+  background: #9E9E9E;
+  color: #212121;
+  text-align: left;
+  margin-top: 1rem;
+  //overflow: visible;
+}
+
+.players_details_style {
+  //align-self: flex-end;
+  padding-left: 10rem;
+}
+
+.player_single_text {
+  flex-grow: 1;
+  //align-self: flex-end;
+}
+
+.player_bottom_btns {
+  display: flex;
+}
+
+.player_single_text_double {
+  flex-grow: 2;
+  //align-self: flex-end;
+
+}
+
+.sub_title {
+  color: black;
+  font-weight: 500;
+  font-size: $xl-size;
+}
+
+.img_float_left {
+  //position: absolute;
+  left: 0;
+  top: 0;
+  margin-left: 2rem;
+  float: left;
+}

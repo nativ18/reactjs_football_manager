@@ -1,2 +1,11 @@
-@import './base/settings';
-@import './base/base';
+@import './base/_settings.scss';
+@import './base/_base.scss';
+@import './components/_header';
+@import './components/_main_page';
+@import './components/_create_player_button';
+@import './components/_create_player';
+@import './components/small_button';
+@import './components/player_page';
+
+
+

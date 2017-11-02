@@ -30,7 +30,7 @@ class CreatePlayerPage extends React.Component {
 
 // sending function that create players into component
 const mapDispatchToProps = (dispatch, props) => ({
-    editPlayer: (player) => dispatch(createPlayer(player))
+    editPlayer: (player) => dispatch(createPlayer(true, player))
 });
 
 const mapStateToProps = (state, props) => ({

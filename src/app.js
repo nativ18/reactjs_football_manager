@@ -7,6 +7,7 @@ import configureStore from './store/configureStore.js';
 import {Provider} from 'react-redux';
 import AppRouter from "./routers/AppRouter";
 import {createPlayer} from "./actions/players";
+import './styles/styles.scss'
 
 const store = configureStore();
 
@@ -16,9 +17,20 @@ const jsx = (
     </Provider>
 );
 
-store.dispatch(createPlayer({fullname: "Nativ Levy", age: 33, price: 1000000, position: "AT"}))
-store.dispatch(createPlayer({fullname: "Nir Biton", age: 33, price: 1000000, position: "GK"}))
+function allStorage() {
 
+    const keys = Object.keys(localStorage);
+    let i = keys.length;
+
+    while (i--) {
+        console.log("key = " + keys[i])
+        console.log("item = " + localStorage.getItem(keys[i]))
+        store.dispatch(createPlayer(false,JSON.parse(localStorage.getItem(keys[i]))))
+    }
+
+}
+
+allStorage();
 
 const state = store.getState();
 console.log(state)

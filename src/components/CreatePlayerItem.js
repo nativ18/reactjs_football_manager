@@ -16,17 +16,19 @@ export class CreatePlayerItem extends React.Component {
             price: props.player ? props.player.price : '',
             position: props.player ? props.player.position : '',
             error: '',
-            imagePreviewUrl: '',
+            imagePreviewUrl: props.player ? props.player.image : '',
+            file: props.player ? props.player.file : '',
+            description: props.player ? props.player.description : '',
             id: props.player ? props.player.id : ''
         };
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState(this.createStateFromProps(nextProps));
+        this.createStateFromProps(nextProps);
     }
 
     onSubmit = (e) => {
-        e.preventDefault(); // prevents default submi
+        e.preventDefault(); // prevents default submit
 
         if (!this.state.fullname || !this.state.age) {
             this.setState(() => ({error: 'Please provide description and amount.'}));
@@ -39,6 +41,8 @@ export class CreatePlayerItem extends React.Component {
                 price: this.state.price,
                 position: this.state.position,
                 image: this.state.imagePreviewUrl,
+                description: this.state.description,
+                file: this.state.file
             });
         }
     }
@@ -62,16 +66,23 @@ export class CreatePlayerItem extends React.Component {
         this.setState(() => ({position}));
     };
 
+    onDescriptionChange = (e) => {
+        const description = e.target.value;
+        this.setState(() => ({description}));
+    }
+
 
     handleImageChange = (e) => {
         e.preventDefault();
 
         let reader = new FileReader();
         let file = e.target.files[0];
+        console.log(e.target)
 
         reader.onloadend = () => {
             this.setState({
-                imagePreviewUrl: reader.result
+                imagePreviewUrl: reader.result,
+                file: file
             });
         }
 
@@ -79,30 +90,55 @@ export class CreatePlayerItem extends React.Component {
     }
 
     render() {
+        console.log(this.state.file)
         return (
-            <div>
-                <form onSubmit={this.onSubmit}>
+            <div className="centered_container">
+                <form className="centered_container" onSubmit={this.onSubmit}>
                     {this.state.error && <h1>wrong input!</h1>}
                     <h1>Choose player settings:</h1>
-                    <input type="file" onChange={this.handleImageChange}/>
-                    {this.state.imagePreviewUrl && <img src={this.state.imagePreviewUrl} width={200} height={200}/>}
-                    <input type="text"
-                           value={this.state.fullname}
-                           placeholder='name'
-                           onChange={this.onFullnameChange}/>
-                    <input type="text"
-                           value={this.state.age}
-                           placeholder='age'
-                           onChange={this.onAgeChange}/>
-                    <input type="text"
-                           value={this.state.position}
-                           placeholder='position'
-                           onChange={this.onPositionChange}/>
-                    <input type="text"
-                           value={this.state.price}
-                           placeholder='price'
-                           onChange={this.onPriceChange}/>
-                    <button type="submit">{this.state.id ? "Edit" : "Create"}</button>
+                    <div className="centered_container">
+                        <input className="input" type="file" onChange={this.handleImageChange}/>
+                        <br/>
+                        {this.state.imagePreviewUrl ?
+                            <img src={this.state.imagePreviewUrl} className="player_single_text"/> :
+                            <img
+                                src={require('../../public/images/avatarph.png')}
+                                className="player_single_text"/>}
+                        <br/>
+                        <input type="text"
+                               value={this.state.fullname}
+                               placeholder='Full Name'
+                               className="input"
+                               onChange={this.onFullnameChange}/>
+                        <br/>
+                        <input type="text"
+                               value={this.state.age}
+                               placeholder='Age'
+                               className="input"
+                               onChange={this.onAgeChange}/>
+                        <br/>
+                        <input type="text"
+                               value={this.state.position}
+                               placeholder='Position'
+                               className="input"
+                               onChange={this.onPositionChange}/>
+                        <br/>
+                        <input type="text"
+                               value={this.state.price}
+                               placeholder='Price'
+                               className="input"
+                               onChange={this.onPriceChange}/>
+                        <br/>
+                    </div>
+                    <textarea
+                        type="text"
+                        value={this.state.description}
+                        placeholder='Tell us who you are'
+                        className="big_input"
+                        onChange={this.onDescriptionChange}
+                    />
+                    <br/>
+                    <button className="create_player_button" type="submit">{this.state.id ? "Edit" : "Create"}</button>
                 </form>
             </div>)
     }

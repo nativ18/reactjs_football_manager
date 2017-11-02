@@ -5,6 +5,7 @@ html {
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: $m-size;
+  background: #EEEEEE;
 }
 
 button {
@@ -13,4 +14,12 @@ button {
 
 button:disabled {
   cursor: default;
+}
+
+img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: 2rem;
+  margin-left: 0;
 }

@@ -13,10 +13,6 @@ class CreatePlayerPage extends React.Component {
 
         this.props.history.push('/');
     };
-    onRemove = (player) => {
-        // this.props.removeExpense({id: player.id});
-        // this.props.history.push('/');
-    };
 
     render() {
         return (
@@ -36,8 +32,8 @@ class CreatePlayerPage extends React.Component {
 
 // sending function that create players into component
 const mapDispatchToProps = (dispatch, props) => ({
-    createPlayer: (player) => dispatch(createPlayer(player)),
-    editPlayer: (player) => dispatch(editPlayer(player.id, player))
+    createPlayer: (player) => dispatch(createPlayer(true, player)),
+    editPlayer: (player) => dispatch(editPlayer(true, player.id, player))
 });
 
 const mapStateToProps = (state, props) => ({
